@@ -10,6 +10,7 @@ fun removeChar(str: String): String {
     return ""
 }
 
+    
 
 test:
 
