@@ -23,7 +23,14 @@ Examples
 Solution:
 
 fun longToIP(ip: UInt): String {
-    return "" // do it!
+    //bit manipulation, shift bits right, then apply 0 mask for each octect
+    val mask: UInt = 0xFF.toUInt()
+    val ip1 = (ip shr 24) and mask
+    val ip2 = (ip shr 16) and mask
+    val ip3 = (ip shr 8) and mask
+    val ip4 = (ip shr 0) and mask
+    
+    return "$ip1.$ip2.$ip3.$ip4"
 }
 
 
