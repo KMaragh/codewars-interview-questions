@@ -1,0 +1,48 @@
+Problem:
+
+Your task, is to create NxN multiplication table, of size provided in parameter.
+
+for example, when given size is 3:
+
+1 2 3
+2 4 6
+3 6 9
+for given example, the return value should be: [[1,2,3],[2,4,6],[3,6,9]]
+
+
+
+
+
+solution:
+
+package kata
+
+object KataSolution {
+    fun multiplicationTable(size: Int): Array<IntArray> {
+        TODO()
+    }
+}
+
+test:
+
+package kata
+
+import org.junit.Test
+import kotlin.test.assertTrue
+
+class ExampleTests {
+     private fun Array<IntArray>.stringify(): String = "[\n" + Array(this.size,{ "  [ " + this[it].map { n -> n.toString() }.joinToString(", ") + " ]" }).joinToString("\n") + "\n]"
+
+    @Test fun `Basic Test`() {
+        val size = 3
+        val user = KataSolution.multiplicationTable(size)
+        
+        val sol = arrayOf(
+            intArrayOf(1,2,3),
+            intArrayOf(2,4,6),
+            intArrayOf(3,6,9)
+        )
+       
+        assertTrue(user.contentDeepEquals(sol), "Expected:\n${sol.stringify()}\nGot:\n${user.stringify()}")
+    }
+}
