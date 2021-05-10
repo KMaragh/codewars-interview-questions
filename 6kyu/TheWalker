@@ -35,10 +35,16 @@ If you need the constant pi you can use pi = 3.14159265358979323846
 Solution:
 package solv
 
+import kotlin.math.*
+
 fun solve(a:Int, b:Int, c:Int, alpha:Int, beta:Int, gamma:Int):IntArray {
   // your code
+  val x = a * cos(alpha*PI/180) - b * sin(beta*PI/180) - c * cos(gamma*PI/180)
+  val y = a * sin(alpha*PI/180) + b * cos(beta*PI/180) - c * sin(gamma*PI/180)
+  val r = hypot(x,y)
+  val d = acos(x/r)*180/PI
+  return arrayOf(round(r).toInt(),d.toInt(),(d*60.0).toInt()%60,(d*3600.0).toInt()%60).toIntArray()
 }
-
 
 Test:
 package solv
