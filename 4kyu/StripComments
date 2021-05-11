@@ -21,8 +21,33 @@ var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ch
 
 
 Solution:
+
 fun solution(input: String, markers: CharArray): String {
    // coding here 
+    val sb = StringBuilder()
+    var skip = false
+    var index = 0
+    while(index < input.length){
+        val character = input.get(index)
+        if(markers.contains(character)){
+            skip = true
+            index++
+            continue
+        }
+        
+        if(skip == false){
+            sb.append(character)
+        }else if(skip == true && character.equals('\n') ){
+            skip = false
+            val temp = sb.trimEnd()
+            sb.clear()
+            sb.append(temp)
+            sb.append(character)
+        }
+        index++
+    }
+    return sb.toString().trimEnd()
+
 }
 
 
