@@ -50,6 +50,13 @@ fun solution(input: String, markers: CharArray): String {
 
 }
 
+fun alternateSolution(input: String, markers: CharArray): String =
+   input.lines().map { line ->
+          line.split(*markers).first().trimEnd()
+	     }.joinToString("\n")
+
+
+
 
 Test:
 import kotlin.test.assertEquals
