@@ -48,9 +48,15 @@ Solution:
 package prodfib
 
 fun productFib(prod:Long):LongArray {
-    // your code
+    var fn = 0L
+    var fn1 = 1L
+    while (fn * fn1 < prod) {
+      val fn2 = fn1 + fn
+      fn = fn1
+      fn1 = fn2
+    }
+    return longArrayOf(fn, fn1, if (fn1*fn==prod) 1L else 0L)
 }
-
 
 
 
