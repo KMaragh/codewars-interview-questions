@@ -27,10 +27,34 @@ solution:
 import java.util.*
 
 fun sumOfDivided(l: IntArray): String {
-  return "" // do it
+    val sb = StringBuilder()
+    var highestNumber = 0
+    
+    for(number in l){
+        highestNumber = if(number > highestNumber) number else highestNumber
+    }
+    
+    for(number in 2..highestNumber){
+        if(checkPrime(number)){
+            var value = 0
+            for(currentNumber in l){
+                value += if(currentNumber % number == 0) currentNumber else 0
+            }
+            if(value != 0) sb.append("($number $value)")
+        }
+    }
+    
+  return sb.toString()
 }
 
-
+fun checkPrime(possiblePrime: Int) : Boolean {
+    var remainder = 0
+    for(currentNumber in 2..possiblePrime / 2){
+        remainder = possiblePrime % currentNumber
+        if(remainder == 0) return false
+    }
+    return true 
+}
 
 test:
 
