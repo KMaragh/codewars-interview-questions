@@ -45,6 +45,14 @@ package morsecode
 fun decodeMorse(code: String): String {
   //Your code goes here!
   //A map, MorseCode, is available
+
+   val list = code.trim().split("  ")
+        .map{ it.split(" ")
+                .map{MorseCode.getOrDefault(it,"")}
+                .joinToString("")
+        }
+        
+    return list.joinToString(separator = " ")
 }
 
 
