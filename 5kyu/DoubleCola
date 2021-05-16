@@ -25,6 +25,14 @@ package doublecola
 
 fun whoIsNext(names: List<String>, n: Int): String {
   //Your code goes here
+    
+    val len = names.size
+    var n2 = n
+    while (n2 > len) {
+      n2 -= len - 1
+      n2 /= 2
+    }
+    return names[n2 - 1]
 }
 
 Test:
