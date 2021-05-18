@@ -7,11 +7,8 @@ You can assume all values in the array are numbers.
 
 Solution:
 
-fun smallEnough(a : IntArray, limit : Int) : Boolean {
+fun smallEnough(a : IntArray, limit : Int) : Boolean = a.all{ it <= limit }
 
-    a.forEach({ if(it > limit) return false})
-    return true
-}
 
 
 Test:
