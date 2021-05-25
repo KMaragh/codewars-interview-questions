@@ -31,6 +31,13 @@ package newavg
 
 fun newAvg(a:DoubleArray, navg:Double):Long {
     // your code
+    
+    val targetNumber = navg * (a.size + 1)
+    val sum = a.sum()
+    if(targetNumber < sum)
+        throw IllegalArgumentException()
+    
+    return Math.ceil(targetNumber - sum).toLong()
 }
 
 
