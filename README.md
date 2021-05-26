@@ -3,6 +3,11 @@ A repository filled with codewars challenges (kata). Currently doing and pushing
 
 **Link to Profile:** https://www.codewars.com/users/KMar
 
+## Status
+| Ranking |
+| --- |
+| [![CodeWars](https://www.codewars.com/users/KMar/badges/micro)](https://www.codewars.com/users/KMar) |
+
 ## How It's Made:
 
 **Tech used:** Kotlin & Java
@@ -18,3 +23,6 @@ A few of the solutions currently may not be optimized, but after every 100 kata'
 ## Lessons Learned:
 
 The biggest lesson I have learned while tackling an endless supply of questions is the pattern that arises for each type of question. After going through so many questions, it becomes easier to notice which data structures make my life easier while solving the kata's. 
+
+
+
