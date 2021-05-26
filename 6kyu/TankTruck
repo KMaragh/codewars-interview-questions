@@ -26,6 +26,17 @@ package voltank
 
 fun tankVol(h:Int, d:Int, vt:Int):Int {
     // your code
+
+    
+    val height = h.toDouble()
+    val diameter = d.toDouble()
+    val totalVol = vt.toDouble()
+    
+    return Math.floor(
+        ((4.0 * totalVol) / (Math.pow(diameter, 2.0) * Math.PI)) *
+            (Math.pow(diameter/ 2.0, 2.0) * Math.acos(1.0 - height / (diameter / 2.0)) -
+                    (diameter / 2.0 - height) * Math.sqrt(height * (diameter - height))) 
+              ).toInt()
 }
 
 Test:
