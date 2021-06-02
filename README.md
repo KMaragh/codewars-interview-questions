@@ -8,6 +8,7 @@ A repository filled with codewars challenges (kata). Currently doing and pushing
 | --- |
 | [![CodeWars](https://www.codewars.com/users/KMar/badges/micro)](https://www.codewars.com/users/KMar) |
 
+
 ## How It's Made:
 
 **Tech used:** Kotlin & Java
