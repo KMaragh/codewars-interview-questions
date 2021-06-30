@@ -48,8 +48,37 @@ In OCaml arrays are replaced by lists.
 
 Solution:
 
+package operarray
+import java.util.function.LongBinaryOperator
+import kotlin.math.abs
 
 
+fun gcdi(a:Long, b:Long):Long {
+    return if (b == 0L) abs(a) else gcdi(b, a % b)
+}
+fun lcmu(a:Long, b:Long):Long {
+    return abs(a * b) / gcdi(a, b)
+}
+fun som(a:Long, b:Long):Long {
+  return a + b
+}
+fun maxi(a:Long, b:Long):Long {
+  return Math.max(a,b)
+}
+fun mini(a:Long, b:Long):Long {
+  return Math.min(a,b)
+}
+
+fun operArray( lcb: LongBinaryOperator, arr:LongArray, initial:Long):LongArray {
+    val answerArray = LongArray(arr.size)
+    
+    for(index in answerArray.indices){
+        val currentValue = if(index == 0) initial else answerArray[index - 1]
+        val newValue = lcb.applyAsLong(currentValue, arr[index])
+        answerArray.set(index, newValue)
+    }
+    return answerArray
+}
 
 Test:
 package operarray
