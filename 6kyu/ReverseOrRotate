@@ -25,7 +25,35 @@ s = "123456" gives "234561".
 
 Solution:
 
+package revrot
 
+fun revRot(nums:String, sz:Int): String {
+    // your code
+    if(sz <= 0 || sz > nums.length || nums.isEmpty()) return ""
+    
+    var sumOfSubstring = 0    
+    
+    val list = nums.chunked(sz) {  chunk: CharSequence -> if(chunk.length < sz) "" else if(isChunkReversible(chunk)) chunk.reversed().toString() else rotateChunk(chunk)}
+    return list.joinToString("")
+}
+
+fun isChunkReversible(s: CharSequence): Boolean {
+    var sum = 0
+    for(character in s){
+        val numericValue =Character.getNumericValue(character)
+        sum += numericValue * numericValue * numericValue
+    }
+    return sum % 2 == 0
+}
+
+fun rotateChunk(cs: CharSequence): String {
+    val first = cs.first()
+    val restOfWord = cs.subSequence(1, cs.length)
+    val sb = StringBuilder()
+    sb.append(restOfWord)
+    sb.append(first)
+    return sb.toString()
+}
 
 Test:
 
