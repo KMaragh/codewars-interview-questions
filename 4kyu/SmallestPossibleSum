@@ -29,6 +29,19 @@ There are performance tests consisted of very big numbers and arrays of size at 
 
 Solution:
 
+fun solution(numbers: LongArray): Long {
+  // code here
+    var commonDenom = numbers.first()
+    
+    for (index in numbers.indices) {
+        commonDenom = gcd(commonDenom, numbers[index])
+    }
+    
+    // after finding the gcd across all of the values in the array, multiply by size to get sum
+    return commonDenom * numbers.size
+}
+
+fun gcd(a: Long, b: Long): Long = if (b == 0L) a else gcd(b, a % b)
 
 
 Test:
