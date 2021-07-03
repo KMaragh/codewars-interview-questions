@@ -21,8 +21,24 @@ Solution:
 package dna
 
 fun makeComplement(dna : String) : String {
-
+    val sb = StringBuilder()
+    
+    for(letter in dna){
+        sb.append(dnaSymbolComplement(letter))    
+    }
+    
+    return sb.toString()
 }
+
+fun dnaSymbolComplement(character: Char): Char {
+    return when(character){
+        'A' -> 'T'
+        'T' -> 'A'
+        'G' -> 'C'
+        'C' -> 'G'
+         else -> ' '
+    }
+} 
 
 Test:
 
