@@ -38,6 +38,16 @@ package travel
 
 fun travel(r:String, zipcode:String):String {
     // your code
+    if(zipcode.isEmpty()){
+      return ":/"
+    }
+    var matches = r.split(",").filter{it.endsWith(zipcode)}.map { it.replace(" $zipcode", "") }
+
+    val numbers = matches.map { it.substringBefore(" ") }.joinToString(",")
+    val streets = matches.map { it.substringAfter(" ") }.joinToString(",")
+
+    return "$zipcode:$streets/$numbers"
+
 }
 
 Test:
