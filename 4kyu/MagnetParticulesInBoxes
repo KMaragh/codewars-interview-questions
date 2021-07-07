@@ -73,7 +73,24 @@ link to symbol Sigma
 
 Solution:
 
+package magnets
+import kotlin.math.pow
 
+fun doubles(maxk:Int, maxn:Int):Double {
+    // your code
+    
+    var sum = 0.0
+    for(k in 1..maxk){
+        for(n in 1..maxn){
+            sum += calculateForce(k, n)
+        }
+    }
+    return sum
+}
+
+fun calculateForce(k: Int, n: Int) : Double {
+    return (1 / ( (k * (n + 1).toDouble().pow(2 * k) ) ))
+} 
 
 Test:
 
