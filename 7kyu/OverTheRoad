@@ -26,6 +26,10 @@ To solve this, you need to think of a way to do the kata without making massive 
 
 Solution:
 
+fun overTheRoad(address: Int, n: Int): Int {
+  //code here
+   return n * 2 + 1 - address
+}
 
 Test:
 
