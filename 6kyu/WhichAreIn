@@ -23,6 +23,9 @@ Beware: r must be without duplicates.
 
 Solution:
 
+fun inArray(array1: Array<String>, array2: Array<String>): Array<String> {
+   return array1.filter{e->array2.any{it.contains(e)}}.distinct().sorted().toTypedArray()
+}
 
 Test:
 
