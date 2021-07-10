@@ -29,6 +29,19 @@ Wikipedia has an article that may be helpful.
 Solution:
 
 
+fun lcs(a: String, b: String): String {
+  
+    if(a.length == 0 || b.length == 0) return ""
+    
+    if(a.get(a.length - 1) == b.get(b.length - 1)) return lcs(a.dropLast(1), b.dropLast(1)) + a.get(a.length - 1)
+    
+    val first = lcs(a,b.dropLast(1))
+    val second = lcs(a.dropLast(1), b)
+    
+    return if(first.length > second.length) first else second
+}
+
+
 Test:
 
 import org.junit.Test
