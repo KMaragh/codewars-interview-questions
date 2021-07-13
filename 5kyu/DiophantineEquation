@@ -1,0 +1,47 @@
+Problem:
+
+In mathematics, a Diophantine equation is a polynomial equation, usually with two or more unknowns, such that only the integer solutions are sought or studied.
+
+In this kata we want to find all integers x, y (x >= 0, y >= 0) solutions of a diophantine equation of the form:
+
+x2 - 4 * y2 = n
+(where the unknowns are x and y, and n is a given positive number) in decreasing order of the positive xi.
+
+If there is no solution return [] or "[]" or "". (See "RUN SAMPLE TESTS" for examples of returns).
+
+Examples:
+solEquaStr(90005) --> "[[45003, 22501], [9003, 4499], [981, 467], [309, 37]]"
+solEquaStr(90002) --> "[]"
+Hint:
+x2 - 4 * y2 = (x - 2*y) * (x + 2*y)
+
+
+Solution:
+
+
+
+Test:
+package diophequa
+
+import org.junit.Assert.*
+import org.junit.Test
+import kotlin.test.assertEquals
+import java.util.Random
+
+class diophanteTest {
+  @Test
+  fun test2() {
+    assertEquals("[[4, 1]]", solEquaStr(12))
+  }
+  @Test
+  fun test3() {
+    assertEquals("[[7, 3]]", solEquaStr(13))
+  }
+  @Test
+  fun test11() {
+    val a = "[[4505, 2252], [1503, 750], [647, 320], [505, 248], [415, 202], [353, 170], [225, 102], [153, 60], [135, 48], [103, 20], [97, 10], [95, 2]]"
+    assertEquals(a, solEquaStr(9009))
+  }
+}
+
+
