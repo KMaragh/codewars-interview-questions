@@ -17,8 +17,25 @@ x2 - 4 * y2 = (x - 2*y) * (x + 2*y)
 
 
 Solution:
-
-
+    val sb = StringBuilder()
+    sb.append("[")
+    val endIndex = (Math.sqrt(n.toDouble()) + 1).toInt()
+    for (index in 1..endIndex) {
+        if(n.toInt() % index == 0){
+            val j = (n / index).toInt()
+            if( (index + j ) % 2 == 0 && (j - index) % 4 == 0 ){
+                val x = (index + j) / 2
+                val y = (j - index) / 4
+                sb.append("[${x}, ${y}], ")
+            }
+        }
+    }
+    var answer = sb.dropLastWhile{ it == ' ' }
+    answer = answer.dropLastWhile{ it == ',' }
+    sb.clear()
+    sb.append(answer)
+    sb.append("]")
+    return sb.toString()
 
 Test:
 package diophequa
