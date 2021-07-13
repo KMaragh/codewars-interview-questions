@@ -17,25 +17,24 @@ x2 - 4 * y2 = (x - 2*y) * (x + 2*y)
 
 
 Solution:
-    val sb = StringBuilder()
-    sb.append("[")
-    val endIndex = (Math.sqrt(n.toDouble()) + 1).toInt()
-    for (index in 1..endIndex) {
-        if(n.toInt() % index == 0){
-            val j = (n / index).toInt()
-            if( (index + j ) % 2 == 0 && (j - index) % 4 == 0 ){
-                val x = (index + j) / 2
-                val y = (j - index) / 4
-                sb.append("[${x}, ${y}], ")
-            }
+
+fun solEquaStr(n:Long):String {
+    var start = Math.ceil(Math.sqrt(n.toDouble()))
+    val result = mutableListOf<Pair<Int,Int>>()
+    while (true){
+        val r = (start*start-n)/4
+        val sq = Math.sqrt(r)
+        if(start/2.0 - sq < 0.25)
+            break
+        val y = Math.floor(Math.sqrt(r))
+        if(y*y == r){
+            result.add(start.toInt() to y.toInt())
         }
+        start++
     }
-    var answer = sb.dropLastWhile{ it == ' ' }
-    answer = answer.dropLastWhile{ it == ',' }
-    sb.clear()
-    sb.append(answer)
-    sb.append("]")
-    return sb.toString()
+    result.reverse()
+    return result.joinToString(", ","[","]") { "[${it.first}, ${it.second}]" }
+}
 
 Test:
 package diophequa
