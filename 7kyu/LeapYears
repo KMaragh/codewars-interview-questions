@@ -13,6 +13,11 @@ Solution:
 
 fun isLeapYear(year: Int) : Boolean {
   // code here
+    return when {
+        year % 400 == 0 && year % 100 != 0-> true
+        year % 4 == 0 -> true
+        else -> false
+    }
 }
 
 Test:
