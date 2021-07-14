@@ -18,6 +18,22 @@ Solution:
 
 fun fizzBuzz(n: Int): Array<String> {
   //TODO: Enter your code here!
+    val array = Array<String>(n){""}
+    for(index in 1..n){
+        
+        val answer = 
+        if(index % 15 == 0) {
+            "FizzBuzz"
+        } else if(index % 5 == 0){
+            "Buzz"
+        } else if( index % 3 == 0){
+            "Fizz"
+        } else{
+            "${index}"
+        }
+        array[index - 1] = answer
+    }
+  return array
 }
 
 Test:
