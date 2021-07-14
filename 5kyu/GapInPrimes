@@ -40,6 +40,34 @@ https://en.wikipedia.org/wiki/Prime_gap
 
 Solution:
 
+//if these g-gap prime numbers don't exist return []
+fun gap(g:Int, m:Long, n:Long):LongArray {
+    // your code
+    val list = mutableListOf<Long>()
+    
+    for(num in m..n){
+        if(isPrimeNumber(num)){
+            list.add(num)
+        }
+    }
+    
+    for(index in 1..list.size - 1){
+        val biggerPrime = list.get(index) 
+        val smallerPrime = list.get(index - 1)
+        if( (biggerPrime - smallerPrime).toInt() == g ){
+            return longArrayOf(smallerPrime, biggerPrime)
+        }
+    }
+    
+    return LongArray(0)
+}
+
+fun isPrimeNumber(primeCandidate: Long): Boolean {
+    for(num in 2..Math.sqrt(primeCandidate.toDouble()).toInt()  ){
+        if(primeCandidate % num.toLong() == 0L) return false
+    }
+    return true
+}
 
 Test:
 
