@@ -13,7 +13,81 @@ rgb(148, 0, 211) // returns 9400D3
 
 Solution:
 
+fun rgb(r: Int, g: Int, b: Int): String {
+  // complete this function  
+  // Excessive in hindsight :O
+    val sb = StringBuilder()
+    
+    val newR = getValidDecimal(r)
+    val newG = getValidDecimal(g)
+    val newB = getValidDecimal(b)
+    
+    sb.append( convertFromBinaryToHexadecimal (convertFromDecimalToBinary(newR) ) )
+    sb.append( convertFromBinaryToHexadecimal (convertFromDecimalToBinary(newG) ) )
+    sb.append( convertFromBinaryToHexadecimal (convertFromDecimalToBinary(newB) ) )
 
+    println(sb.toString())
+    return sb.toString()
+}
+
+fun getValidDecimal(decimalNumber: Int) : Int {
+    if(decimalNumber > 255){
+        return 255
+    } else if( decimalNumber < 0) {
+        return 0
+    } else {
+        return decimalNumber
+    }
+}
+
+fun convertFromDecimalToBinary(decimalNumber : Int) : String {
+    var decimalNumber = decimalNumber
+    val binaryStr = StringBuilder()
+    
+    while (decimalNumber > 0) {
+        val r = decimalNumber % 2
+        decimalNumber /= 2
+        binaryStr.append(r)
+    }
+    
+    return binaryStr.reverse().toString()    
+}
+
+
+fun convertFromBinaryToHexadecimal(binaryNumber: String) : String {
+    val binaryStr = StringBuilder()
+    val reverse = binaryNumber.reversed().toString()
+    binaryStr.append(reverse)
+    
+    while(binaryStr.length < 8){
+        binaryStr.append(0)
+    }
+    
+    val binaryNum = binaryStr.reverse().toString()
+    val firstHalf = binaryNum.substring(0..3).toLong()
+    val secondHalf = binaryNum.substring(4..7).toLong()
+
+    binaryStr.clear()
+    binaryStr.append( Integer.toHexString(getDecimalNumber(firstHalf) ) )
+    binaryStr.append( Integer.toHexString(getDecimalNumber(secondHalf) ) )
+    
+    return binaryStr.toString().toUpperCase()
+
+}
+
+fun getDecimalNumber(binaryNumber: Long): Int {
+    var binaryNumber = binaryNumber
+    var decimalNo = 0
+    var power = 0
+    
+    while (binaryNumber > 0) {
+        val r = binaryNumber % 10
+        decimalNo = (decimalNo + r * Math.pow(2.0, power.toDouble())).toInt()
+        binaryNumber /= 10
+        power++
+    }
+    return decimalNo
+}
 
 Test:
 import kotlin.test.assertEquals
