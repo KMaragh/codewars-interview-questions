@@ -41,6 +41,40 @@ if you want to translate, please ask before translating.
 
 Solution:
 
+package solution
+import java.util.ArrayDeque
+
+object DirReduction {
+    fun dirReduc(arr: Array<String>): Array<String> {
+        // your code
+        
+        var stack = ArrayDeque<String>()
+        
+        for(direction in arr){
+            if(stack.size > 0 && opposites(stack.peek(), direction)){
+                stack.pop()
+            } else {
+                stack.push(direction)
+            }
+        }
+        return stack.reversed().toTypedArray()
+    }
+    
+    fun opposites(first:String, second: String): Boolean {
+        return if(first == "NORTH" && second == "SOUTH"){
+            true
+        } else if(first == "SOUTH" && second == "NORTH"){
+            true
+        } else if(first == "EAST" && second == "WEST"){
+            true
+        } else if(first == "WEST" && second == "EAST"){
+            true
+        } else {
+            false
+        }
+    }
+}
+
 Test:
 
 package solution
