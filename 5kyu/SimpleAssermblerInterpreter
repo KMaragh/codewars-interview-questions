@@ -42,9 +42,34 @@ This kata is based on the Advent of Code 2016 - day 12
 
 Solution:
 
+fun interpret(program: Array<String>): Map<String, Int> {
+    val registers = mutableMapOf<String, Int>()
+    val getJustIntOrRegister = {key: String -> 
+        key.toIntOrNull() ?: registers.getOrDefault(key, 0)
+    }
 
+    var i = 0
+    while (i < program.size) {
+        val cmd = program[i].split(" ")
+        val (op, dst) = cmd.take(2)
+        
+        when (op) {
+            "mov" -> registers[dst] = getJustIntOrRegister(cmd[2])
+            "inc" -> registers[dst] = registers.getValue(dst) + 1
+            "dec" -> registers[dst] = registers.getValue(dst) - 1
+            "jnz" -> {
+                if (getJustIntOrRegister(dst) != 0)
+                    i += cmd[2].toInt() - 1
+            }
+        }
+
+        i++
+    }
+    return registers
+}
 
 Test:
+
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -63,6 +88,15 @@ class SolutionTest {
         assertEquals(
                 mapOf("a" to 0, "b" to -20),
                 interpret(arrayOf("mov a -10", "mov b a", "inc a", "dec b", "jnz a -2"))
+        )
+    }
+    
+    @Test
+    fun simple3() {
+        assertEquals(
+            //{'a': 318009, 'b': 196418, 'c': 0, 'd': 0}
+                mapOf("a" to 318009, "b" to 196418, "c" to 0, "d" to 0),
+                interpret(arrayOf("mov a 1", "mov b 1", "mov c 0", "mov d 26", "jnz c 2", "jnz 1 5", "mov c 7", "inc d", "dec c", "jnz c -2", "mov c a", "inc a", "dec b", "jnz b -2", "mov b c", "dec d", "jnz d -6", "mov c 18", "mov d 11", "inc a", "dec d", "jnz d -2", "dec c", "jnz c -5"))
         )
     }
 }
