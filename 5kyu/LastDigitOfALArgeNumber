@@ -37,7 +37,7 @@ Solution:
 
 import java.math.BigInteger;
 fun lastDigit(base: BigInteger, exponent: BigInteger): Int {
-    return 0 
+   return base.modPow(exponent, BigInteger.TEN).toInt() 
 }
 
 Test:
