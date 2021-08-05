@@ -22,7 +22,16 @@ perimeter(7)  should return 216
 
 Solution:
 
+package solution
 
+import java.math.BigInteger
+
+object SumFct {
+    fun perimeter(n: Int): BigInteger = fibonacci(n+1).reduce{x,y -> x+y}.multiply(BigInteger("4"))
+
+    fun fibonacci(n: Int): Sequence<BigInteger> = generateSequence(Pair(BigInteger.ONE, BigInteger.ONE), { Pair(it.second, it.first + it.second) }).map { it.first }.take(n)
+
+}
 
 Test:
 
