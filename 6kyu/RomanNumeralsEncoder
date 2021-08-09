@@ -24,6 +24,46 @@ More about roman numerals - http://en.wikipedia.org/wiki/Roman_numerals
 
 Solution:
 
+package romannumerals
+
+fun encode(num: Int) : String = generateSequence(getHighestRomanSymbol(num)) { if (it.first > 0) getHighestRomanSymbol(it.first) else null }
+    .map { it.second }
+    .joinToString("")
+
+fun getHighestRomanSymbol(num: Int): Pair<Int, String> {
+    
+    return if(num - 1000 >= 0){
+        Pair(num - 1000, "M")
+    } else if(num - 900 >= 0){
+        Pair(num - 900, "CM")
+    } else if(num - 500 >= 0){
+        Pair(num - 500, "D")
+    } else if(num - 400 >= 0){
+        Pair(num - 400, "CD")
+    } else if(num - 100 >= 0){
+        Pair(num - 100, "C")
+    } else if(num - 90 >= 0){
+        Pair(num - 90, "XC")
+    } else if(num - 50 >= 0){
+        Pair(num - 50, "L")
+    } else if(num - 40 >= 0){
+        Pair(num - 40, "XL")
+    } else if(num - 10 >= 0){
+        Pair(num - 10, "X")
+    } else if(num - 9 >= 0){
+        Pair(num - 9, "IX")
+    } else if(num - 5 >= 0){
+        Pair(num - 5, "V")
+    } else if(num - 4 >= 0){
+        Pair(num - 4, "IV")
+    } else if(num - 1 >= 0){
+        Pair(num - 1, "I") 
+    } else {
+        Pair(num, "")
+    }
+   
+}
+
 
 Test:
 
