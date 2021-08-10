@@ -13,7 +13,7 @@ A repository filled with codewars challenges (kata). Currently doing and pushing
 
 **Tech used:** Kotlin & Java
 
-Everyday, at some point during the day, I solve a Codewar! 
+Everyday I solve Leetcode and Codewars problems to practice and hone my algorithm skills. 
 
 ## Optimizations
 
