@@ -13,8 +13,10 @@ Example
 
 Solution:
 
-
-
+fun hexStringToRGB(hexString: String): RGB {
+  val (red, green, blue) = hexString.drop(1).chunked(2).map { it.toInt(16) }
+  return RGB(red, green, blue)
+}
 
 Test:
 
